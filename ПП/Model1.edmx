@@ -1,0 +1,199 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище SettingsManagerModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AutoActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Condition" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Action" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="IsEnabled" Type="bit" />
+        </EntityType>
+        <EntityType Name="MonitoringData">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="CpuUsage" Type="float" Nullable="false" />
+          <Property Name="MemoryUsage" Type="float" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StartupItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Path" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Enabled" Type="bit" />
+          <Property Name="Source" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="SystemSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Theme" Type="nvarchar" MaxLength="20" />
+          <Property Name="Language" Type="nvarchar" MaxLength="20" />
+          <Property Name="AutoUpdates" Type="bit" />
+          <Property Name="SendStatistics" Type="bit" />
+          <Property Name="LogsPath" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityContainer Name="Хранилище SettingsManagerModelContainer">
+          <EntitySet Name="AutoActions" EntityType="Self.AutoActions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MonitoringData" EntityType="Self.MonitoringData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Profiles" EntityType="Self.Profiles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StartupItems" EntityType="Self.StartupItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SystemSettings" EntityType="Self.SystemSettings" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SettingsManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AutoActions">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Condition" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Action" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsEnabled" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="MonitoringData">
+          <Key>
+            <PropertyRef Name="Date" />
+          </Key>
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CpuUsage" Type="Double" Nullable="false" />
+          <Property Name="MemoryUsage" Type="Double" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Profiles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="StartupItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Path" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" />
+          <Property Name="Source" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SystemSettings">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Theme" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Language" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AutoUpdates" Type="Boolean" />
+          <Property Name="SendStatistics" Type="Boolean" />
+          <Property Name="LogsPath" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SettingsManagerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AutoActions" EntityType="Self.AutoActions" />
+          <EntitySet Name="MonitoringData" EntityType="Self.MonitoringData" />
+          <EntitySet Name="Profiles" EntityType="Self.Profiles" />
+          <EntitySet Name="StartupItems" EntityType="Self.StartupItems" />
+          <EntitySet Name="SystemSettings" EntityType="Self.SystemSettings" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище SettingsManagerModelContainer" CdmEntityContainer="SettingsManagerEntities">
+          <EntitySetMapping Name="AutoActions">
+            <EntityTypeMapping TypeName="SettingsManagerModel.AutoActions">
+              <MappingFragment StoreEntitySet="AutoActions">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Condition" ColumnName="Condition" />
+                <ScalarProperty Name="Action" ColumnName="Action" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MonitoringData">
+            <EntityTypeMapping TypeName="SettingsManagerModel.MonitoringData">
+              <MappingFragment StoreEntitySet="MonitoringData">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="CpuUsage" ColumnName="CpuUsage" />
+                <ScalarProperty Name="MemoryUsage" ColumnName="MemoryUsage" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Profiles">
+            <EntityTypeMapping TypeName="SettingsManagerModel.Profiles">
+              <MappingFragment StoreEntitySet="Profiles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StartupItems">
+            <EntityTypeMapping TypeName="SettingsManagerModel.StartupItems">
+              <MappingFragment StoreEntitySet="StartupItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Path" ColumnName="Path" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="Source" ColumnName="Source" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemSettings">
+            <EntityTypeMapping TypeName="SettingsManagerModel.SystemSettings">
+              <MappingFragment StoreEntitySet="SystemSettings">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Theme" ColumnName="Theme" />
+                <ScalarProperty Name="Language" ColumnName="Language" />
+                <ScalarProperty Name="AutoUpdates" ColumnName="AutoUpdates" />
+                <ScalarProperty Name="SendStatistics" ColumnName="SendStatistics" />
+                <ScalarProperty Name="LogsPath" ColumnName="LogsPath" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
